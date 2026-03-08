@@ -1,64 +1,47 @@
 from utils.data_loader import load_data
 from models.preference_model import build_user_item_matrix
 from models.similarity_model import compute_user_similarity
-from engine.recommender import recommend_movies
-from engine.context_filter import apply_context
-
-from models.content_model import build_content_similarity
-from engine.content_recommender import recommend_similar_movies
-
 from models.ranking_model import train_ranking_model
+
+from engine.candidate_generator import generate_candidates
 from engine.ranker import rank_movies
 
 
 # Load dataset
 users, movies, ratings = load_data()
 
-# Build collaborative filtering components
+
+# Build user-item matrix
 matrix = build_user_item_matrix(ratings)
+
+
+# Compute user similarity
 similarity = compute_user_similarity(matrix)
 
-# Get recommendations for user 1
-recs = recommend_movies(1, matrix, similarity)
 
-# Apply context
-context_recs = apply_context(recs, "night")
-
-print("\nRecommended Movies:\n")
-
-for movie_id, score in context_recs:
-    title = movies[movies["movie_id"] == movie_id]["title"].values[0]
-    print(title, score)
-
-
-# -------- Content Based Section -------- #
-
-content_similarity = build_content_similarity(movies)
-
-print("\nMovies similar to Toy Story:\n")
-
-toy_story_id = movies[movies["title"].str.contains("Toy Story")]["movie_id"].values[0]
-
-similar_movies = recommend_similar_movies(
-    toy_story_id,
-    movies,
-    content_similarity
-)
-
-print(similar_movies["title"])
-
-
-#------------- add ranking step ------------- #
-
+# Train ranking model
 model = train_ranking_model(ratings)
 
-candidate_movies = matrix.columns[:50]
 
-ranked = rank_movies(1, candidate_movies, model)
+# Select user
+user_id = 1
 
-print("\nTop Ranked movies\n")
 
-for movie_id, score in ranked[:5]:
-    title = movies[movies["movie_id"]==movie_id]["title"].values[0]
+# Generate candidate movies
+candidates = generate_candidates(user_id, matrix, similarity, movies)
 
-    print(title, score)
+
+# Rank candidate movies
+ranked_movies = rank_movies(user_id, candidates, model)
+
+
+print("\nTop Recommended Movies\n")
+
+
+# Print top 10 recommendations
+for movie_id, score in ranked_movies[:10]:
+
+    title = movies[movies["movie_id"] == movie_id]["title"].values[0]
+
+    print(title, "->", round(score, 2))
+    
