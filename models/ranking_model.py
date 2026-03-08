@@ -1,14 +1,14 @@
 from sklearn.ensemble import RandomForestRegressor
 
-def train_ranking_model(ratings):
+def train_ranking_model(features, labels):
 
-    X = ratings[["user_id","movie_id"]]
-    y = ratings["rating"]
+    #X = ratings[["user_id","movie_id"]]
+    #y = ratings["rating"]
 
 
-    model = RandomForestRegressor(n_estimators=50)
+    model = RandomForestRegressor(n_estimators=100)
 
-    model.fit(X,y)
+    model.fit(features, labels)
 
     return model
 
