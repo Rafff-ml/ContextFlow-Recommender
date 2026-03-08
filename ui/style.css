@@ -1,64 +1,88 @@
 body {
-    background: #0b0f1a;
-    font-family: Arial;
-    color: white;
     margin: 0;
+    background: #0b0f1a;
+    color: white;
+    font-family: Arial;
 }
 
-header {
+.navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 20px 40px;
     background: #111827;
+    position: sticky;
+    top: 0;
 }
 
-h1 {
-    margin: 0;
-    font-size: 28px;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #22c55e;
 }
 
 .search input {
     padding: 10px;
-    border-radius: 6px;
     border: none;
+    border-radius: 6px;
 }
 
 .search button {
     padding: 10px 15px;
-    border: none;
     background: #22c55e;
-    color: white;
+    border: none;
     border-radius: 6px;
-    cursor: pointer;
+    color: white;
 }
 
-.movies-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 20px;
+.hero {
+    height: 350px;
+    background: linear-gradient(rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.9)),
+        url("https://images.unsplash.com/photo-1606813907291-d86efa9b94db");
+
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.section {
     padding: 40px;
 }
 
+.row {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-top: 20px;
+}
+
 .movie-card {
+    min-width: 200px;
     background: #1f2937;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: 0.3s;
 }
 
 .movie-card:hover {
-    transform: scale(1.08);
+    transform: scale(1.1);
 }
 
 .movie-card img {
     width: 100%;
-    height: 250px;
+    height: 300px;
     object-fit: cover;
 }
 
 .movie-title {
     padding: 10px;
-    font-size: 14px;
     text-align: center;
 }

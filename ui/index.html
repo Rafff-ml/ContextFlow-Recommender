@@ -8,19 +8,34 @@
 
 <body>
 
-    <header>
-        <h1>ContextFlow AI Recommender</h1>
+    <header class="navbar">
+
+        <div class="logo">ContextFlow</div>
 
         <div class="search">
             <input type="number" id="userId" placeholder="Enter User ID">
             <button onclick="getRecommendations()">Recommend</button>
         </div>
+
     </header>
 
-    <div class="movies-container" id="results"></div>
+    <section class="hero">
 
-    <script src="script.js"></script>
+        <h1>Discover Movies You Will Love</h1>
+        <p>AI-powered recommendations</p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>Recommended For You</h2>
+
+        <div class="row" id="results"></div>
+
+    </section>
 
 </body>
+
+<script src="script.js"></script>
 
 </html>
