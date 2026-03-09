@@ -11,6 +11,7 @@ from engine.ranker import rank_movies
 
 from utils.evaluation import precision_at_k, recall_at_k
 
+from engine.event_tracker import log_event
 
 # Load dataset
 users, movies, ratings = load_data()
@@ -111,3 +112,7 @@ print("\nEvaluation\n")
 
 print("Precision@10:", round(precision, 3))
 print("Recall@10:", round(recall, 3))
+
+
+
+log_event(user_id, ranked_movies[0][0], "click")
