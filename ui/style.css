@@ -1,19 +1,17 @@
 body {
     margin: 0;
     background: #0a0f1c;
-    font-family: Arial;
     color: white;
+    font-family: Arial;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 20px 40px;
     background: #111827;
     position: sticky;
     top: 0;
-    z-index: 100;
 }
 
 .logo {
@@ -38,21 +36,12 @@ body {
 }
 
 .hero {
-    height: 420px;
-    background: linear-gradient(rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.9)),
-        url("https://images.unsplash.com/photo-1606813907291-d86efa9b94db");
-
-    background-size: cover;
+    height: 350px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 60px;
-    margin: 0;
+    align-items: center;
+    background: #111827;
 }
 
 .row-section {
@@ -63,15 +52,14 @@ body {
     display: flex;
     gap: 20px;
     overflow-x: auto;
-    padding-top: 20px;
 }
 
 .movie-card {
     min-width: 200px;
+    background: #1f2937;
     border-radius: 12px;
     overflow: hidden;
-    background: #1f2937;
-    transition: transform 0.3s;
+    transition: 0.3s;
     cursor: pointer;
 }
 

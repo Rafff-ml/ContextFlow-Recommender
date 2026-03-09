@@ -1,2 +1,48 @@
-__pycache__/
+# Python
+
+**pycache**/
 *.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+
+venv/
+.env/
+
+# Environment variables
+
+.env
+
+# Logs
+
+*.log
+app.log
+
+# Data artifacts
+
+events.csv
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# IDE
+
+.vscode/
+.idea/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# Python build
+
+build/
+dist/
+*.egg-info/
+
+# TMDB secret
+
+.env

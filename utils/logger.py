@@ -1,6 +1,7 @@
 import logger
+import logging
 
-def setup_layer():
+def setup_logger():
 
     logger = logging.getLogger("contextflow")
 

@@ -2,27 +2,59 @@ async function loadRecommendations() {
 
     const userId = document.getElementById("userId").value
 
-    const response = await fetch(`http://127.0.0.1:8000/recommend/${userId}`)
+    const res = await fetch(`http://127.0.0.1:8000/recommend/${userId}`)
 
-    const data = await response.json()
+    const data = await res.json()
 
-    const recommended = document.getElementById("recommended")
+    renderRow("recommended", data.recommended)
 
-    recommended.innerHTML = ""
+    renderRow("trending", data.trending)
 
-    data.recommendations.forEach(movie => {
+    renderRow("discover", data.discover)
+
+}
+
+
+async function getPoster(movie) {
+
+    const res = await fetch(
+        `http://127.0.0.1:8000/poster/${movie}`
+    )
+
+    const data = await res.json()
+
+    if (data.poster) {
+
+        return data.poster
+
+    }
+
+    return "https://via.placeholder.com/300x450"
+
+}
+
+
+async function renderRow(containerId, movies) {
+
+    const container = document.getElementById(containerId)
+
+    container.innerHTML = ""
+
+    for (const movie of movies) {
+
+        const poster = await getPoster(movie)
 
         const card = document.createElement("div")
 
         card.className = "movie-card"
 
         card.innerHTML = `
-<img src="https://via.placeholder.com/300x450">
+<img src="${poster}">
 <div class="movie-title">${movie}</div>
 `
 
-        recommended.appendChild(card)
+        container.appendChild(card)
 
-    })
+    }
 
 }
