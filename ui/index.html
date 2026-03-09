@@ -13,29 +13,52 @@
         <div class="logo">ContextFlow</div>
 
         <div class="search">
-            <input type="number" id="userId" placeholder="Enter User ID">
-            <button onclick="getRecommendations()">Recommend</button>
+            <input type="number" id="userId" placeholder="User ID">
+            <button onclick="loadRecommendations()">Recommend</button>
         </div>
 
     </header>
 
+
     <section class="hero">
 
-        <h1>Discover Movies You Will Love</h1>
-        <p>AI-powered recommendations</p>
+        <div class="hero-content">
+            <h1>AI Movie Discovery</h1>
+            <p>Personalized recommendations powered by AI</p>
+        </div>
 
     </section>
 
-    <section class="section">
+
+    <section class="row-section">
 
         <h2>Recommended For You</h2>
 
-        <div class="row" id="results"></div>
+        <div class="movie-row" id="recommended"></div>
 
     </section>
 
-</body>
 
-<script src="script.js"></script>
+    <section class="row-section">
+
+        <h2>Trending Now</h2>
+
+        <div class="movie-row" id="trending"></div>
+
+    </section>
+
+
+    <section class="row-section">
+
+        <h2>Discover</h2>
+
+        <div class="movie-row" id="discover"></div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
 
 </html>

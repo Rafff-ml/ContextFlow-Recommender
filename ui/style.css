@@ -1,17 +1,19 @@
 body {
     margin: 0;
-    background: #0b0f1a;
-    color: white;
+    background: #0a0f1c;
     font-family: Arial;
+    color: white;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 40px;
     background: #111827;
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -22,8 +24,8 @@ body {
 
 .search input {
     padding: 10px;
-    border: none;
     border-radius: 6px;
+    border: none;
 }
 
 .search button {
@@ -32,48 +34,49 @@ body {
     border: none;
     border-radius: 6px;
     color: white;
+    cursor: pointer;
 }
 
 .hero {
-    height: 350px;
+    height: 420px;
     background: linear-gradient(rgba(0, 0, 0, 0.6),
             rgba(0, 0, 0, 0.9)),
         url("https://images.unsplash.com/photo-1606813907291-d86efa9b94db");
 
     background-size: cover;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 50px;
+    font-size: 60px;
     margin: 0;
 }
 
-.section {
+.row-section {
     padding: 40px;
 }
 
-.row {
+.movie-row {
     display: flex;
-    overflow-x: auto;
     gap: 20px;
+    overflow-x: auto;
     padding-top: 20px;
 }
 
 .movie-card {
     min-width: 200px;
-    background: #1f2937;
     border-radius: 12px;
     overflow: hidden;
-    transition: 0.3s;
+    background: #1f2937;
+    transition: transform 0.3s;
+    cursor: pointer;
 }
 
 .movie-card:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .movie-card img {

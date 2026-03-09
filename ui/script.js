@@ -1,4 +1,4 @@
-async function getRecommendations() {
+async function loadRecommendations() {
 
     const userId = document.getElementById("userId").value
 
@@ -6,9 +6,9 @@ async function getRecommendations() {
 
     const data = await response.json()
 
-    const results = document.getElementById("results")
+    const recommended = document.getElementById("recommended")
 
-    results.innerHTML = ""
+    recommended.innerHTML = ""
 
     data.recommendations.forEach(movie => {
 
@@ -21,7 +21,7 @@ async function getRecommendations() {
 <div class="movie-title">${movie}</div>
 `
 
-        results.appendChild(card)
+        recommended.appendChild(card)
 
     })
 
