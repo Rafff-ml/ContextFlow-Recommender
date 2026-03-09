@@ -1,6 +1,8 @@
+from engine.exploration_controller import mix_recommendations
+from engine.trending_engine import get_trending_movies
 import random
 
-def generate_candidates(user_id, user_item_matrix, similarity_matrix, movies):
+def generate_candidates(user_id, user_item_matrix, similarity_matrix, movies, ratings):
 
     user_index = user_id - 1
 
@@ -9,22 +11,22 @@ def generate_candidates(user_id, user_item_matrix, similarity_matrix, movies):
 
     similar_users = user_similarity.argsort()[-10:]
 
-    Collaborative_candidates = []
+    personalized = []
 
     for u in similar_users:
         watched = user_item_matrix.iloc[u].dropna().index.tolist()
-        Collaborative_candidates.extend(watched)
+        personalized.extend(watched)
 
-    Collaborative_candidates = list(set(Collaborative_candidates))
+    personalized = list(set(personalized))
 
 
     #TRending candidates (most rated movies) 
-    trending = user_item_matrix.count().sort_values(ascending=False).head(100).index.tolist()
+    trending = get_trending_movies(ratings, 200)
 
     #Discovery candidates
-    discovery = random.sample(list(movies["movie_id"]), 50)
+    discovery = random.sample(list(movies["movie_id"]), 100)
 
 
-    candidates = list(set(Collaborative_candidates + trending + discovery))
+    candidates = mix_recommendations(personalized, trending, discovery)
 
-    return candidates   
+    return list(set(candidates))   

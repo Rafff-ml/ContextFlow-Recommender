@@ -65,7 +65,8 @@ candidates = generate_candidates(
     user_id,
     matrix,
     similarity,
-    movies
+    movies,
+    ratings
 )
 
 
